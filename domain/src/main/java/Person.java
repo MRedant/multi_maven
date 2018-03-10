@@ -1,8 +1,13 @@
 public class Person {
     private String name;
 
-    Person(String name) {
+    private Person(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person name= " + name ;
     }
 
     public static class PersonBuilder {
@@ -20,10 +25,5 @@ public class Person {
         public Person createPerson() {
             return new Person(name);
         }
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 }
