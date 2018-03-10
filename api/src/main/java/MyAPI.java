@@ -3,7 +3,6 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class MyAPI {
 
     public static void main(String[] args) {
