@@ -21,4 +21,9 @@ public class Person {
             return new Person(name);
         }
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

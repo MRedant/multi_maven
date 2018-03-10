@@ -13,6 +13,9 @@ public class MyAPI {
                         Person.PersonBuilder.build().setName("Maarten Redant").createPerson()
                         , Person.PersonBuilder.build().setName("Davina Hesta").createPerson()));
 
+        for (Person item:personList) {
+            System.out.println(item.toString());
+        }
     }
 
 }
