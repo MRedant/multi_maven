@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- The group id, artifact id and version. This information is project-specific -->
+    <groupId>be.red-project</groupId>
+    <artifactId>1th-multi-maven</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- 'pom' marks this pom as the parent-pom-->
+    <packaging>pom</packaging>
+
+    <modules>
+        <!-- the included modules in this parent-pom -->
+        <module>api</module>
+        <module>domain</module>
+    </modules>
+
+    <dependencyManagement>
+        <!-- include these external libraries -->
+        <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>24.0-jre</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <!-- compiler plugin set the source and target runtime version to Java 8 -->
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                            <phase>package</phase> <!-- bind to the packaging phase -->
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                            <configuration>
+
+                                <descriptorRefs>
+                                    <descriptorRef>
+                                        jar-with-dependencies
+                                    </descriptorRef>
+                                </descriptorRefs>
+
+                                <archive>
+                                    <manifest>
+                                        <mainClass>
+                                            MyAPI
+                                        </mainClass>
+                                    </manifest>
+                                </archive>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
